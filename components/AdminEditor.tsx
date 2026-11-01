@@ -15,6 +15,7 @@ import {
   Save,
   ShieldCheck,
   Smartphone,
+  AppWindow,
   Trash2,
   UserRound,
   X,
@@ -197,7 +198,7 @@ export default function AdminEditor({
           inputSchema: {
             type: "object",
             properties: {
-              category: { type: "string", enum: ["android", "unity"] },
+              category: { type: "string", enum: ["android", "unity", "app"] },
             },
             required: ["category"],
             additionalProperties: false,
@@ -207,14 +208,14 @@ export default function AdminEditor({
             const value = input as { category?: unknown };
             if (
               !value ||
-              !["android", "unity"].includes(String(value.category)) ||
+              !["android", "unity", "app"].includes(String(value.category)) ||
               Object.keys(value).some((key) => key !== "category")
             )
               throw new Error("Kategori tidak valid.");
             setTab("projects");
             setEditing({
               ...blankProject(projects.length),
-              category: value.category as "android" | "unity",
+              category: value.category as Project["category"],
             });
             return { status: "editor_open", saved: false };
           },
@@ -402,6 +403,16 @@ export default function AdminEditor({
                     .padStart(2, "0")}
                 </strong>
               </div>
+              <div>
+                <AppWindow />
+                <span>App</span>
+                <strong>
+                  {projects
+                    .filter((p) => p.category === "app")
+                    .length.toString()
+                    .padStart(2, "0")}
+                </strong>
+              </div>
             </div>
             <div className="admin-list-title">
               <h2>Semua karya</h2>
@@ -420,8 +431,10 @@ export default function AdminEditor({
                         <img src={p.image} alt="" />
                       ) : p.category === "android" ? (
                         <Smartphone />
-                      ) : (
+                      ) : p.category === "unity" ? (
                         <Gamepad2 />
+                      ) : (
+                        <AppWindow />
                       )}
                     </div>
                     <div className="admin-project-info">
@@ -429,7 +442,9 @@ export default function AdminEditor({
                       <p>
                         {p.category === "android"
                           ? "Android App"
-                          : "Unity Game"}{" "}
+                          : p.category === "unity"
+                            ? "Unity Game"
+                            : "App"}{" "}
                         · {p.year} · Urutan {p.order}
                         {p.sample ? " · Contoh" : ""}
                       </p>
@@ -463,7 +478,7 @@ export default function AdminEditor({
               <div className="empty-state">
                 <FolderOpen size={32} />
                 <h3>Karya pertamamu dimulai di sini.</h3>
-                <p>Tambahkan aplikasi Android atau game Unity milikmu.</p>
+                <p>Tambahkan game Unity, aplikasi Android, atau App milikmu.</p>
                 <button
                   className="button primary"
                   onClick={() => setEditing(blankProject(0))}
@@ -749,6 +764,7 @@ export default function AdminEditor({
                 >
                   <option value="android">Android App</option>
                   <option value="unity">Unity Game</option>
+                  <option value="app">App</option>
                 </select>
               </label>
             </div>
@@ -799,11 +815,11 @@ export default function AdminEditor({
                 onChange={(e) => editField("downloadUrl", e.target.value)}
               />
               <small>
-                Tautan APK / build game di GitHub Releases, itch.io, atau
-                hosting file milikmu.
+                Tautan APK / build game / aplikasi di GitHub Releases, itch.io,
+                atau hosting file milikmu.
               </small>
             </label>
-            {editing.category === "android" ? (
+            {editing.category !== "unity" && (
               <label className="field">
                 URL repositori GitHub
                 <input
@@ -813,9 +829,12 @@ export default function AdminEditor({
                   onChange={(e) => editField("githubUrl", e.target.value)}
                 />
               </label>
-            ) : (
+            )}
+            {editing.category !== "android" && (
               <label className="field">
-                URL play / WebGL
+                {editing.category === "app"
+                  ? "URL buka aplikasi (opsional)"
+                  : "URL play / WebGL"}
                 <input
                   type="url"
                   placeholder="https://…"

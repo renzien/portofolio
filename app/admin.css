@@ -4,7 +4,7 @@
   min-height: 100vh;
 }
 .login-art {
-  background: #e8ede1;
+  background: #e7dfc9;
   padding: 55px;
   display: flex;
   flex-direction: column;
@@ -19,7 +19,7 @@
   line-height: 1.1;
 }
 .login-art h1 em {
-  color: #536543;
+  color: #6c7052;
 }
 .login-art p {
   max-width: 340px;
@@ -159,7 +159,7 @@
 .admin-shell {
   display: flex;
   min-height: 100vh;
-  background: #f6f7f3;
+  background: #f6f5ef;
 }
 .admin-sidebar {
   width: 250px;
@@ -200,12 +200,12 @@
   color: #79816d;
 }
 .admin-sidebar nav button.active {
-  color: #2457ff;
-  background: #eef2ff;
+  color: #4f593c;
+  background: #eeecdf;
 }
 .admin-sidebar nav button span {
   margin-left: auto;
-  background: #dce4ff;
+  background: #dfdec9;
   border-radius: 5px;
   padding: 2px 5px;
   font-size: 10px;
@@ -288,7 +288,7 @@
 }
 .admin-stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 17px;
   margin-bottom: 40px;
 }
@@ -547,7 +547,7 @@
   overflow: hidden;
 }
 .upload-button:focus-within {
-  outline: 3px solid #2457ff;
+  outline: 3px solid #4f593c;
   outline-offset: 3px;
 }
 .upload-button input {
@@ -567,7 +567,7 @@
   cursor: pointer;
 }
 .checkbox-field input {
-  accent-color: #2457ff;
+  accent-color: #4f593c;
   width: 17px;
   height: 17px;
   margin: 0;
@@ -736,6 +736,7 @@
     font-size: 10px;
   }
   .admin-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
     margin-bottom: 30px;
   }

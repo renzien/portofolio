@@ -227,6 +227,73 @@ try {
   const updatedHtml = await (await call("/")).text();
   assert.ok(updatedHtml.includes("Integration Unity"));
   assert.ok(updatedHtml.includes("https://example.com/play"));
+  const appProject = {
+    ...project,
+    title: "Integration App",
+    category: "app",
+    published: false,
+    playUrl: "https://example.com/open-app",
+    githubUrl: "https://github.com/example/desktop-app",
+    downloadUrl: "https://example.com/desktop-app.zip",
+    order: 2,
+  };
+  const createApp = await call("/api/admin/projects", "POST", appProject);
+  assert.equal(createApp.status, 200);
+  const savedApp = (await createApp.json()).project;
+  assert.equal(savedApp.category, "app");
+  assert.ok(
+    !(await (await call("/")).text()).includes("Integration App"),
+    "App draft leaked publicly",
+  );
+  assert.equal(
+    (
+      await call(`/api/admin/projects/${savedApp.id}`, "PUT", {
+        ...appProject,
+        published: true,
+      })
+    ).status,
+    200,
+  );
+  const appHtml = await (await call("/")).text();
+  assert.ok(appHtml.includes('class="project-card app"'));
+  assert.ok(appHtml.includes("Integration App"));
+  assert.ok(appHtml.includes("https://example.com/open-app"));
+  assert.ok(appHtml.includes("https://github.com/example/desktop-app"));
+  assert.ok(appHtml.includes("https://example.com/desktop-app.zip"));
+  assert.equal(
+    (await database.collection("projects").findOne({ id: savedApp.id }))
+      .category,
+    "app",
+  );
+  assert.equal(
+    (
+      await call(`/api/admin/projects/${savedApp.id}`, "PUT", {
+        ...appProject,
+        category: "android",
+        published: true,
+      })
+    ).status,
+    200,
+  );
+  assert.equal(
+    (await database.collection("projects").findOne({ id: savedApp.id }))
+      .category,
+    "android",
+  );
+  assert.equal(
+    (
+      await call(`/api/admin/projects/${savedApp.id}`, "PUT", {
+        ...appProject,
+        published: true,
+      })
+    ).status,
+    200,
+  );
+  assert.equal(
+    (await database.collection("projects").findOne({ id: savedApp.id }))
+      .category,
+    "app",
+  );
   const profile = {
     name: "Alif Rizki",
     role: "Android & Unity Developer",
@@ -297,7 +364,7 @@ try {
     root,
   });
   console.log(
-    "PASS: admin seed/idempotence/indexes, authentication, CSRF, cookies, CRUD, drafts, publish, links, image upload/read, profile persistence, logout, expiry and rate limit (real MongoDB).",
+    "PASS: admin seed/idempotence/indexes, authentication, CSRF, cookies, Unity/Android/App CRUD, App category changes and links, drafts, publish, image upload/read, profile persistence, logout, expiry and rate limit (real MongoDB).",
   );
   if (process.argv.includes("--preview")) {
     await database.collection("loginAttempts").deleteMany({});

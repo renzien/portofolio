@@ -1,7 +1,7 @@
 import type { Project, SiteSettings } from "./types";
 export const defaultSettings: SiteSettings = {
   name: "Alif Rizki",
-  role: "Android & Unity Developer",
+  role: "Unity, Android & App Developer",
   headline: "Dari baris kode,",
   headlineAccent: "jadi pengalaman.",
   intro:

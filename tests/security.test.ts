@@ -69,7 +69,11 @@ test("Allow uploaded images without opening arbitrary local paths", () => {
 });
 test("Project schema rejects privilege/identity injection and malformed content", () => {
   const { id: _, ...project } = sampleProjects[0];
-  assert.equal(projectSchema.safeParse(project).success, true);
+  for (const category of ["android", "unity", "app"])
+    assert.equal(
+      projectSchema.safeParse({ ...project, category }).success,
+      true,
+    );
   assert.equal(
     projectSchema.safeParse({ ...project, id: "overwrite" }).success,
     false,

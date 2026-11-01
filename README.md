@@ -1,13 +1,24 @@
 # Alif Rizki Portofolio
 
-Website portofolio Android Apps dan Unity Games dengan admin pribadi, MongoDB, dan deployment Next.js di Vercel.
+Website portofolio Unity, Android, dan App dengan admin pribadi, MongoDB, dan deployment Next.js di Vercel.
+
+## Update tema beige — untuk website yang sudah berjalan
+
+Paket ini memperbarui tampilan: latar beige, panel putih membulat, tipografi besar, dan kolase proyek. Judul mengikuti lebar panel agar tetap utuh pada layar kecil. Galeri mendukung Unity, Android, dan App, termasuk ikon aksi, efek liquid, loading robot, serta editor admin.
+
+**Gunakan database dan proyek Vercel yang sama. Tidak perlu menjalankan `npm run seed` lagi.** Struktur koleksi dan format konten tidak berubah; proyek, gambar unggahan, profil, email login, dan password lama tetap berada di MongoDB. Pertahankan `MONGODB_URI`, `MONGODB_DB`, dan `APP_URL` di Vercel.
+
+Ekstrak ZIP, lalu unggah **isi folder proyek** ke root repositori GitHub yang terhubung ke Vercel. `package.json` harus tetap berada di root yang sama seperti sebelumnya. Sertakan folder `public/fonts` beserta lisensinya. Setelah commit, tunggu deploy Vercel selesai atau lakukan Redeploy. Jangan membuat proyek Vercel atau database baru.
+
+ZIP khusus GitHub ini mengecualikan `.env.local`, `.admin-bootstrap.json`, `node_modules`, dan `.next`. File env yang sudah kamu miliki di komputer bisa tetap dipakai. Lihat `PANDUAN-UPDATE.md` untuk langkah lengkap.
 
 ## Yang sudah tersedia
 
-- Beranda responsif dengan tipografi editorial, navigasi melayang, dan gambar berefek liquid mengikuti kursor.
+- Beranda responsif dengan latar beige, panel putih, judul PORTFOLIO besar, navigasi kompak, dan kolase gambar berefek liquid mengikuti kursor.
+- Kolase mengambil lima proyek publik pertama sesuai urutan admin. Slot yang belum terisi memakai eksplorasi visual. Kartu jumlah karya menghitung data publik sebenarnya; proyek contoh hanya muncul saat mode pratinjau tanpa MongoDB.
 - Loading screen orisinal **Tiny World**: robot pixel melompati kubus, progress bar, dan transisi masuk. Muncul saat halaman publik dibuka/reload, bisa dilewati dengan tombol atau Escape, serta mengikuti preferensi gerakan terbatas. Intro normal sekitar 2–3 detik, memeriksa gambar hero dan font, dan memiliki batas tunggu 5 detik. Navigasi antarbagian dan halaman admin tidak memutar intro.
-- Galeri dengan filter Android Apps / Unity Games.
-- Android: ikon download dan GitHub. Unity: ikon play dan download. Tautan terbuka di tab baru.
+- Galeri dengan filter Semua karya / Unity / Android / App. Pilihan App juga tersedia pada formulir dan statistik admin.
+- Android: ikon download dan GitHub. Unity: ikon play dan download. App: ikon download, GitHub, dan buka aplikasi (opsional). Tautan terbuka di tab baru.
 - Profil, bio, keahlian, kontak email, GitHub, LinkedIn, dua gambar beranda, judul, dan efek liquid bisa diedit.
 - Admin `/admin`: tambah, edit, hapus, urutkan proyek, simpan draft, dan publikasikan.
 - Menu **Akun & keamanan** untuk mengubah email login dan password dengan konfirmasi password saat ini. Semua sesi lama dicabut setelah perubahan.
@@ -28,7 +39,9 @@ Buka URL yang dicetak terminal, biasanya `http://127.0.0.1:3000`.
 
 Tanpa `MONGODB_URI`, website menampilkan **pratinjau proyek contoh**. Login dan penyimpanan belum aktif. Konten contoh bukan klaim proyek nyata milik Alif. Setelah MongoDB tersambung, galeri mengambil data database dan awalnya kosong sampai kamu menambah proyek.
 
-## Hubungkan MongoDB dan buat admin
+## Hubungkan MongoDB dan buat admin untuk instalasi baru
+
+Lewati bagian ini jika database dan akun admin sudah pernah dibuat.
 
 1. Buat cluster di [MongoDB Atlas](https://www.mongodb.com/atlas). Buat database user khusus dengan hak `readWrite` untuk database `alif_portfolio`.
 2. Di Network Access, izinkan alamat IP komputer yang digunakan untuk membuat admin, dan akses keluar deployment Vercel. Sesuaikan daftar IP dengan konfigurasi jaringan Vercel yang kamu gunakan. Alamat IP keluar serverless biasa bisa berubah; lihat [panduan koneksi database Vercel](https://vercel.com/guides/how-to-allowlist-deployment-ip-address).
@@ -53,13 +66,11 @@ Tanpa `MONGODB_URI`, website menampilkan **pratinjau proyek contoh**. Login dan 
    MONGODB_URI=mongodb+srv://USERNAME:PASSWORD@YOUR-CLUSTER.mongodb.net/?retryWrites=true&w=majority
    MONGODB_DB=alif_portfolio
    APP_URL=http://127.0.0.1:3000
-   ADMIN_EMAIL=alifrizki1011@gmail.com
-   ADMIN_PASSWORD=
+   ADMIN_EMAIL=you@example.com
+   ADMIN_PASSWORD=isi-password-pilihanmu-minimal-10-karakter
    ```
 
-   ZIP ini menyertakan `.admin-bootstrap.json` berisi email di atas dan **hash password yang kamu minta**. Biarkan `ADMIN_PASSWORD` kosong untuk menggunakan akun awal tersebut. Password asli tidak ditulis di source atau ZIP. File bootstrap hanya dibaca oleh seed lokal, sudah dikecualikan dari Git dan deploy Vercel; jangan unggah file tersebut secara manual ke repositori publik.
-
-   Jika ingin memilih password awal lain, isi `ADMIN_PASSWORD` (10–256 karakter). Apabila mengambil source dari Git tanpa file bootstrap, isi sendiri `ADMIN_EMAIL` dan `ADMIN_PASSWORD`. Simpan connection string dan file `.env.local` secara privat.
+   Untuk database baru, isi email dan password awal pilihanmu (10–256 karakter). ZIP GitHub tidak menyertakan kredensial atau file akun awal. Jika memakai database lama, akun sudah tersimpan di MongoDB dan variabel admin tidak diperlukan untuk menjalankan website. Simpan connection string dan file `.env.local` secara privat.
 
 6. Buat akun dan indeks database:
 
@@ -71,7 +82,7 @@ Tanpa `MONGODB_URI`, website menampilkan **pratinjau proyek contoh**. Login dan 
 
 7. Restart `npm run dev`, buka `/admin`, dan masuk dengan akun yang barusan dibuat.
 8. Isi **Profil & kontak**, **Beranda & tampilan**, lalu tambah karya di **Karya & proyek**. Centang **Publikasikan di portofolio** untuk menampilkannya. Angka urutan yang lebih kecil tampil lebih dulu.
-9. Setelah setup, file `.admin-bootstrap.json` tidak diperlukan saat website berjalan. Jika mengisi `ADMIN_PASSWORD` sendiri, hapus nilainya dari `.env.local` setelah selesai.
+9. Setelah setup, hapus nilai `ADMIN_PASSWORD` dari `.env.local` jika tidak dibutuhkan lagi. Kredensial login berikutnya dibaca dari MongoDB.
 
 ## Deploy ke Vercel
 
@@ -169,6 +180,6 @@ Integration test menggunakan **MongoDB sungguhan sementara** melalui `mongodb-me
 
 ## Aset dan referensi visual
 
-Desain mengambil inspirasi tata letak dari [Lds Studio](https://www.lds.studio/) dan interaksi gambar dari [LiveMeFive](https://livemefive.com/). Implementasi, teks, dan visual portofolio dibuat untuk proyek ini; aset referensi tidak disalin. `liquid.webp` dan `valley.webp` adalah gambar orisinal hasil generasi AI. Ilustrasi antarmuka proyek contoh bukan screenshot aplikasi asli. Font DM Sans dan Instrument Serif disertakan lewat Fontsource; ikon antarmuka memakai Lucide.
+Tema beige mengikuti gambar referensi yang diberikan pengguna: panel putih, judul besar, dan komposisi kolase. Interaksi liquid mempertahankan inspirasi dari [LiveMeFive](https://livemefive.com/). Implementasi dan visual dibuat untuk proyek ini; gambar karya pada referensi tidak disalin. `liquid.webp` dan `valley.webp` adalah gambar orisinal hasil generasi AI. Ilustrasi antarmuka proyek contoh bukan screenshot aplikasi asli. Font DM Sans dan Instrument Serif disertakan lewat Fontsource; Barlow Condensed disimpan lokal di `public/fonts` dengan lisensi OFL terlampir; ikon memakai Lucide.
 
-Paket belum dipublikasikan ke akun Vercel atau dihubungkan ke Atlas milikmu. Kredensial layanan tersebut memang perlu kamu isi sendiri.
+Pembaruan ini disiapkan sebagai source ZIP dan belum dikirim ke GitHub atau deployment Vercel. Database lama dapat dipakai dengan konfigurasi Vercel yang sudah ada.

@@ -1,7 +1,7 @@
 export type Project = {
   id: string;
   title: string;
-  category: "android" | "unity";
+  category: "android" | "unity" | "app";
   description: string;
   image: string;
   tags: string[];

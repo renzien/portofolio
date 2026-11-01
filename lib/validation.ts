@@ -31,7 +31,7 @@ const tags = z
 export const projectSchema = z
   .object({
     title: z.string().trim().min(1, "Judul wajib diisi.").max(80),
-    category: z.enum(["android", "unity"]),
+    category: z.enum(["android", "unity", "app"]),
     description: z.string().trim().max(600),
     image: imageUrl,
     tags,
