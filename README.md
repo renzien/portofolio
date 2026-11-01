@@ -16,6 +16,7 @@ ZIP khusus GitHub ini mengecualikan `.env.local`, `.admin-bootstrap.json`, `node
 
 - Beranda responsif dengan latar beige, panel putih, judul PORTFOLIO besar, navigasi kompak, dan kolase gambar berefek liquid mengikuti kursor.
 - Kolase mengambil lima proyek publik pertama sesuai urutan admin. Slot yang belum terisi memakai eksplorasi visual. Kartu jumlah karya menghitung data publik sebenarnya; proyek contoh hanya muncul saat mode pratinjau tanpa MongoDB.
+- Bagian Tentang memakai maskot robot kecil dengan animasi idle, kedipan, dan lambaian tangan. Animasi mengikuti preferensi gerakan terbatas. Baris tanda tangan nama/lokasi di bawah bio dihapus.
 - Loading screen orisinal **Tiny World**: robot pixel melompati kubus, progress bar, dan transisi masuk. Muncul saat halaman publik dibuka/reload, bisa dilewati dengan tombol atau Escape, serta mengikuti preferensi gerakan terbatas. Intro normal sekitar 2–3 detik, memeriksa gambar hero dan font, dan memiliki batas tunggu 5 detik. Navigasi antarbagian dan halaman admin tidak memutar intro.
 - Galeri dengan filter Semua karya / Unity / Android / App. Pilihan App juga tersedia pada formulir dan statistik admin.
 - Android: ikon download dan GitHub. Unity: ikon play dan download. App: ikon download, GitHub, dan buka aplikasi (opsional). Tautan terbuka di tab baru.

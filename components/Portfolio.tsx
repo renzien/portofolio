@@ -12,11 +12,11 @@ import {
   Mail,
   Menu,
   X,
-  MoveUpRight,
 } from "lucide-react";
 import { Github, Linkedin } from "./BrandIcons";
 import type { PortfolioData, Project, SiteSettings } from "@/lib/types";
 import LiquidImage from "./LiquidImage";
+import AboutMascot from "./AboutMascot";
 
 const categoryDetails = {
   android: {
@@ -552,17 +552,7 @@ export default function Portfolio({ data }: { data: PortfolioData }) {
             )}
           </section>
           <section className="about-section section-wrap" id="about">
-            <div className="about-portrait">
-              <LiquidImage
-                src={s.heroImage}
-                enabled={s.liquidEnabled}
-                alt={`Eksplorasi visual ${s.name}`}
-              />
-              <div className="portrait-caption">
-                <span>ALWAYS EXPLORING.</span>
-                <span className="portrait-monogram">{initials}®</span>
-              </div>
-            </div>
+            <AboutMascot />
             <div className="about-copy">
               <span className="eyebrow">02 / THE PERSON BEHIND THE PIXELS</span>
               <h2>
@@ -580,12 +570,6 @@ export default function Portfolio({ data }: { data: PortfolioData }) {
                 {s.skills.map((skill) => (
                   <span key={skill}>{skill}</span>
                 ))}
-              </div>
-              <div className="about-signature">
-                <span>{s.name}</span>
-                <span>
-                  {s.location} <MoveUpRight size={13} />
-                </span>
               </div>
             </div>
           </section>

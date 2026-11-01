@@ -42,7 +42,8 @@ Setelah status Ready, buka website dan lakukan refresh. Jika browser masih menam
 - Kartu yang belum berisi proyek memakai gambar/ilustrasi visual; tidak menambah proyek ke database.
 - Jumlah karya dihitung dari proyek yang berstatus Publik.
 - Judul dan intro lama tetap ditampilkan di blok perkenalan; profil dan kontak tetap dapat diedit dari admin.
-- Gambar hero yang sudah kamu atur tetap dipakai sebagai eksplorasi visual dan gambar bagian tentang.
+- Gambar hero yang sudah kamu atur tetap tersimpan dan dipakai sebagai eksplorasi visual cadangan pada slot kolase yang belum berisi proyek.
+- Bagian Tentang memakai ikon maskot robot kecil yang bergerak idle, berkedip, dan melambaikan tangan. Gambar besar dan baris nama/lokasi di bawah bio sudah dihapus; teks bio dan keahlian tetap dapat diedit di admin.
 - Tombol Android tetap download dan GitHub. Tombol Unity tetap play dan download.
 - Kategori App tersedia pada filter publik dan pilihan kategori di admin. Gunakan untuk aplikasi umum, desktop, atau web. App mendukung tautan download, repositori GitHub, dan URL buka aplikasi opsional.
 - Proyek lama tidak diubah kategorinya secara otomatis. Untuk mengelompokkan ulang, edit proyek di admin, pilih App, lalu simpan.

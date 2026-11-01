@@ -238,6 +238,10 @@ svg {
 .skip-link:focus {
   top: 10px;
 }
+/* Startup and skip navigation focus the content container, not a control. */
+.portfolio-page #main:focus {
+  outline: none;
+}
 
 /* The public portfolio sits on one white board, like a collected sheet of work. */
 .portfolio-page {
@@ -1106,46 +1110,103 @@ a.feature-tile:hover > .liquid-image img {
 }
 .about-section {
   display: grid;
-  grid-template-columns: 0.9fr 1.15fr;
-  gap: 70px;
+  grid-template-columns: minmax(120px, 0.45fr) minmax(0, 1.55fr);
+  align-items: center;
+  gap: 60px;
   border-top: 1px solid var(--line);
   padding-top: 85px;
 }
-.about-portrait {
-  min-height: 430px;
-  overflow: hidden;
-  position: relative;
-  border-radius: 9px;
-  background: #dfddd3;
+.about-mascot {
+  width: 144px;
+  max-width: 100%;
+  justify-self: center;
 }
-.about-portrait > .liquid-image {
-  position: absolute;
-  inset: 0;
+.about-mascot > svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
 }
-.portrait-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding: 60px 24px 21px;
-  background: linear-gradient(transparent, #151c0a55);
-  color: #fff;
+.mascot-body {
+  animation: mascot-idle 4s ease-in-out infinite;
 }
-.portrait-caption > span:first-child {
-  font-size: 8px;
-  letter-spacing: 0.11em;
-  padding-bottom: 6px;
+.mascot-wave {
+  transform-origin: 95px 69px;
+  animation: mascot-wave 6s ease-in-out infinite;
 }
-.portrait-monogram {
-  font-size: 56px;
-  font-weight: 650;
-  letter-spacing: -0.09em;
+.mascot-eyes {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mascot-blink 5s linear infinite;
+}
+.mascot-shadow {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mascot-shadow 4s ease-in-out infinite;
+}
+.mascot-sparkle {
+  animation: mascot-sparkle 4s ease-in-out infinite;
+}
+@keyframes mascot-idle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+@keyframes mascot-wave {
+  0%,
+  8%,
+  36%,
+  100% {
+    transform: rotate(0);
+  }
+  12%,
+  23% {
+    transform: rotate(-18deg);
+  }
+  17%,
+  29% {
+    transform: rotate(12deg);
+  }
+}
+@keyframes mascot-blink {
+  0%,
+  43%,
+  48%,
+  100% {
+    transform: scaleY(1);
+  }
+  45%,
+  46% {
+    transform: scaleY(0.12);
+  }
+}
+@keyframes mascot-shadow {
+  0%,
+  100% {
+    transform: scaleX(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scaleX(0.85);
+    opacity: 0.55;
+  }
+}
+@keyframes mascot-sparkle {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.9;
+  }
 }
 .about-copy {
   padding: 8px 0;
+  max-width: 720px;
 }
 .about-copy h2 {
   font-size: clamp(34px, 3.7vw, 49px);
@@ -1172,25 +1233,6 @@ a.feature-tile:hover > .liquid-image img {
   padding: 7px 10px;
   color: #737864;
   font-size: 9px;
-}
-.about-signature {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid var(--line);
-  padding-top: 19px;
-  margin-top: 27px;
-}
-.about-signature > span:first-child {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 28px;
-}
-.about-signature > span:last-child {
-  display: flex;
-  gap: 8px;
-  font-size: 10px;
-  color: var(--muted);
 }
 .contact-section {
   background: #eeeee2;
@@ -1350,9 +1392,6 @@ a.feature-tile:hover > .liquid-image img {
   .about-section {
     gap: 40px;
   }
-  .about-portrait {
-    min-height: 400px;
-  }
   .contact-section {
     padding: 35px 30px;
   }
@@ -1493,9 +1532,6 @@ a.feature-tile:hover > .liquid-image img {
   }
   .about-copy > p {
     font-size: 11px;
-  }
-  .about-portrait {
-    min-height: 430px;
   }
   .contact-section {
     padding: 30px 25px;
@@ -1734,9 +1770,9 @@ a.feature-tile:hover > .liquid-image img {
     grid-template-columns: 1fr;
     gap: 30px;
   }
-  .about-portrait {
-    min-height: 0;
-    height: 300px;
+  .about-mascot {
+    width: 112px;
+    justify-self: start;
   }
   .about-copy h2 {
     font-size: 40px;
@@ -1746,9 +1782,6 @@ a.feature-tile:hover > .liquid-image img {
   }
   .about-copy .eyebrow {
     font-size: 9px;
-  }
-  .about-signature {
-    margin-top: 24px;
   }
   .contact-section {
     padding: 28px 20px;
