@@ -14,22 +14,22 @@ export default function AboutMascot() {
           cy="120"
           rx="27"
           ry="4"
-          fill="#dedfce"
+          fill="#c6dfe1"
         />
         <g className="mascot-body">
           <path
             d="M64 35V23"
-            stroke="#59613f"
+            stroke="#327e94"
             strokeWidth="4"
             strokeLinecap="round"
           />
-          <circle cx="64" cy="19" r="5" fill="#c2cd99" />
-          <rect x="30" y="52" width="9" height="20" rx="4.5" fill="#c1c9a8" />
-          <rect x="91" y="52" width="9" height="20" rx="4.5" fill="#c1c9a8" />
+          <circle cx="64" cy="19" r="5" fill="#f5a98b" />
+          <rect x="30" y="52" width="9" height="20" rx="4.5" fill="#9ecdd5" />
+          <rect x="91" y="52" width="9" height="20" rx="4.5" fill="#9ecdd5" />
           <path
             d="M37 71C26 72 24 82 28 86"
             fill="none"
-            stroke="#59613f"
+            stroke="#327e94"
             strokeWidth="7"
             strokeLinecap="round"
           />
@@ -37,38 +37,38 @@ export default function AboutMascot() {
             <path
               d="M95 69C108 65 109 52 106 43"
               fill="none"
-              stroke="#59613f"
+              stroke="#327e94"
               strokeWidth="7"
               strokeLinecap="round"
             />
             <path
               d="M106 45L100 39M105 41V33M109 42L113 35"
               fill="none"
-              stroke="#7e8b59"
+              stroke="#317082"
               strokeWidth="4"
               strokeLinecap="round"
             />
           </g>
-          <rect x="36" y="34" width="58" height="54" rx="17" fill="#59613f" />
-          <rect x="42" y="42" width="46" height="29" rx="10" fill="#293421" />
-          <g className="mascot-eyes" fill="#f6f5e8">
+          <rect x="36" y="34" width="58" height="54" rx="17" fill="#327e94" />
+          <rect x="42" y="42" width="46" height="29" rx="10" fill="#133f4f" />
+          <g className="mascot-eyes" fill="#effafe">
             <rect x="51" y="51" width="6" height="9" rx="3" />
             <rect x="73" y="51" width="6" height="9" rx="3" />
           </g>
           <path
             d="M61 62Q65 66 69 62"
             fill="none"
-            stroke="#c4d299"
+            stroke="#b3e7f1"
             strokeWidth="2"
             strokeLinecap="round"
           />
-          <rect x="49" y="85" width="32" height="15" rx="6" fill="#838f61" />
-          <rect x="57" y="78" width="16" height="4" rx="2" fill="#c4ceaa" />
-          <rect x="44" y="99" width="16" height="8" rx="4" fill="#39462b" />
-          <rect x="70" y="99" width="16" height="8" rx="4" fill="#39462b" />
+          <rect x="49" y="85" width="32" height="15" rx="6" fill="#83bcce" />
+          <rect x="57" y="78" width="16" height="4" rx="2" fill="#c6edf2" />
+          <rect x="44" y="99" width="16" height="8" rx="4" fill="#244e5b" />
+          <rect x="70" y="99" width="16" height="8" rx="4" fill="#244e5b" />
           <path
             d="M46 39H53"
-            stroke="#a1b17c"
+            stroke="#8dc9d7"
             strokeWidth="3"
             strokeLinecap="round"
           />
@@ -76,7 +76,7 @@ export default function AboutMascot() {
         <g
           className="mascot-sparkle"
           fill="none"
-          stroke="#a2ab85"
+          stroke="#d38770"
           strokeWidth="2"
           strokeLinecap="round"
         >

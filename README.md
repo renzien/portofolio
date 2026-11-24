@@ -2,20 +2,20 @@
 
 Website portofolio Unity, Android, dan App dengan admin pribadi, MongoDB, dan deployment Next.js di Vercel.
 
-## Update tema beige — untuk website yang sudah berjalan
+## Update tema biru pastel
 
-Paket ini memperbarui tampilan: latar beige, panel putih membulat, tipografi besar, dan kolase proyek. Judul mengikuti lebar panel agar tetap utuh pada layar kecil. Galeri mendukung Unity, Android, dan App, termasuk ikon aksi, efek liquid, loading robot, serta editor admin.
+Tema ini menampilkan kolase sampul proyek di pembuka biru pastel, tombol coral, kartu Unity, Android, dan App, serta panel kontak gelap. Ikon dan maskot bergerak saat masuk layar atau saat disorot. Tata letak mengikuti lebar layar.
 
 **Gunakan database dan proyek Vercel yang sama. Tidak perlu menjalankan `npm run seed` lagi.** Struktur koleksi dan format konten tidak berubah; proyek, gambar unggahan, profil, email login, dan password lama tetap berada di MongoDB. Pertahankan `MONGODB_URI`, `MONGODB_DB`, dan `APP_URL` di Vercel.
 
-Ekstrak ZIP, lalu unggah **isi folder proyek** ke root repositori GitHub yang terhubung ke Vercel. `package.json` harus tetap berada di root yang sama seperti sebelumnya. Sertakan folder `public/fonts` beserta lisensinya. Setelah commit, tunggu deploy Vercel selesai atau lakukan Redeploy. Jangan membuat proyek Vercel atau database baru.
+Ekstrak ZIP, lalu unggah **isi folder proyek** ke root repositori GitHub yang terhubung ke Vercel. Pastikan `package.json` berada di root yang sama seperti sebelumnya. Setelah commit, tunggu deploy Vercel selesai.
 
 ZIP khusus GitHub ini mengecualikan `.env.local`, `.admin-bootstrap.json`, `node_modules`, dan `.next`. File env yang sudah kamu miliki di komputer bisa tetap dipakai. Lihat `PANDUAN-UPDATE.md` untuk langkah lengkap.
 
 ## Yang sudah tersedia
 
-- Beranda responsif dengan latar beige, panel putih, judul PORTFOLIO besar, navigasi kompak, dan kolase gambar berefek liquid mengikuti kursor.
-- Kolase mengambil lima proyek publik pertama sesuai urutan admin. Slot yang belum terisi memakai eksplorasi visual. Kartu jumlah karya menghitung data publik sebenarnya; proyek contoh hanya muncul saat mode pratinjau tanpa MongoDB.
+- Beranda responsif dengan panel putih, aksen biru pastel dan coral, serta kolase gambar berefek liquid saat diaktifkan di admin.
+- Kolase mengambil hingga lima proyek publik pertama sesuai urutan admin dan dua gambar dari pengaturan beranda. Jumlah karya dihitung dari data publik. Proyek contoh ditandai saat pratinjau tanpa MongoDB.
 - Bagian Tentang memakai maskot robot kecil dengan animasi idle, kedipan, dan lambaian tangan. Animasi mengikuti preferensi gerakan terbatas. Baris tanda tangan nama/lokasi di bawah bio dihapus.
 - Loading screen orisinal **Tiny World**: robot pixel melompati kubus, progress bar, dan transisi masuk. Muncul saat halaman publik dibuka/reload, bisa dilewati dengan tombol atau Escape, serta mengikuti preferensi gerakan terbatas. Intro normal sekitar 2–3 detik, memeriksa gambar hero dan font, dan memiliki batas tunggu 5 detik. Navigasi antarbagian dan halaman admin tidak memutar intro.
 - Galeri dengan filter Semua karya / Unity / Android / App. Pilihan App juga tersedia pada formulir dan statistik admin.
@@ -147,14 +147,15 @@ components/LiquidImage.tsx  Efek liquid dengan fallback gerakan terbatas
 components/StartupScreen.tsx  Alur loading, pemuatan aset, skip, dan aksesibilitas
 components/StartupScene.tsx   Maskot robot pixel dan visual loading
 app/startup.css               Animasi intro Tiny World
-app/globals.css             Desain publik dan breakpoint responsif
+app/portfolio.css          Tema halaman publik, responsivitas, dan gerakan
+app/globals.css            Gaya dasar bersama
 app/admin.css               Desain halaman admin
 lib/db.ts                   Koneksi MongoDB yang dipakai ulang
 lib/auth.ts                 Sesi, cookie, dan validasi origin
 lib/validation.ts           Validasi semua data dari admin
 lib/defaults.ts             Teks awal dan proyek demo lokal
 scripts/seed.mjs            Pembuatan admin dan indeks
-public/images/              Dua gambar orisinal untuk tampilan awal
+public/images/             Ilustrasi untuk kolase dan tampilan awal
 ```
 
 Teks label navigasi dan struktur halaman tetap di source; konten profil, hero, gambar, sosial, dan semua proyek diedit lewat admin. MongoDB memakai koleksi `admins`, `sessions`, `loginAttempts`, `settings`, `projects`, dan `media`.
@@ -181,6 +182,6 @@ Integration test menggunakan **MongoDB sungguhan sementara** melalui `mongodb-me
 
 ## Aset dan referensi visual
 
-Tema beige mengikuti gambar referensi yang diberikan pengguna: panel putih, judul besar, dan komposisi kolase. Interaksi liquid mempertahankan inspirasi dari [LiveMeFive](https://livemefive.com/). Implementasi dan visual dibuat untuk proyek ini; gambar karya pada referensi tidak disalin. `liquid.webp` dan `valley.webp` adalah gambar orisinal hasil generasi AI. Ilustrasi antarmuka proyek contoh bukan screenshot aplikasi asli. Font DM Sans dan Instrument Serif disertakan lewat Fontsource; Barlow Condensed disimpan lokal di `public/fonts` dengan lisensi OFL terlampir; ikon memakai Lucide.
+Tema biru pastel mengikuti susunan kolase dan kartu kategori pada referensi pengguna. Interaksi liquid mempertahankan inspirasi dari [LiveMeFive](https://livemefive.com/). Ilustrasi orisinal `pastel-objects.webp` dibuat dengan ImageGen bawaan untuk kolase. Prompt menggambarkan lengkung keramik teal, bola coral, dan kubus kobalt di atas alas mint dengan pencahayaan studio. `liquid.webp` dan `valley.webp` juga merupakan ilustrasi orisinal. Tipografi menggunakan DM Sans dan Instrument Serif, sedangkan ikon menggunakan Lucide.
 
 Pembaruan ini disiapkan sebagai source ZIP dan belum dikirim ke GitHub atau deployment Vercel. Database lama dapat dipakai dengan konfigurasi Vercel yang sudah ada.

@@ -5,11 +5,13 @@ export default function LiquidImage({
   enabled = true,
   className = "",
   alt = "",
+  loading,
 }: {
   src: string;
   enabled?: boolean;
   className?: string;
   alt?: string;
+  loading?: "eager" | "lazy";
 }) {
   const id = useId().replace(/:/g, "");
   const container = useRef<HTMLDivElement>(null);
@@ -99,6 +101,7 @@ export default function LiquidImage({
         ref={image}
         src={src}
         alt={alt}
+        loading={loading}
         decoding="async"
         onError={(e) => {
           e.currentTarget.style.visibility = "hidden";

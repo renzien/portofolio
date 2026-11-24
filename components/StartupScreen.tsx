@@ -160,7 +160,9 @@ export default function StartupScreen({ children }: { children: ReactNode }) {
           />
         </div>
       )}
-      <div ref={content}>{children}</div>
+      <div ref={content} data-site-ready={visible ? undefined : ""}>
+        {children}
+      </div>
     </>
   );
 }

@@ -2,6 +2,7 @@ import { getPortfolio } from "@/lib/data";
 import Portfolio from "@/components/Portfolio";
 import { Suspense } from "react";
 import StartupScreen from "@/components/StartupScreen";
+import "./portfolio.css";
 export const dynamic = "force-dynamic";
 export async function generateMetadata() {
   const { settings } = await getPortfolio();

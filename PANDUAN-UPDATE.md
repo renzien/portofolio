@@ -11,7 +11,7 @@ Ekstrak ZIP tema terbaru. Buka folder `alif-rizki-portfolio` yang berisi `packag
 1. Buka repositori `portofolio` yang sudah terhubung ke Vercel.
 2. Pilih **Add file → Upload files** pada root repositori.
 3. Tarik **isi folder** hasil ekstrak ke halaman upload, bukan folder pembungkus `alif-rizki-portfolio`.
-4. Sertakan `app`, `components`, `lib`, `public`, `scripts`, `tests`, `package.json`, `package-lock.json`, dan berkas konfigurasi lain di paket. `public/fonts` wajib ikut agar judul besar tampil sesuai desain.
+4. Sertakan `app`, `components`, `lib`, `public`, `scripts`, `tests`, `package.json`, `package-lock.json`, dan berkas konfigurasi lain di paket. Ilustrasi kolase baru ada di `public/images/pastel-objects.webp`.
 5. Commit ke branch yang digunakan Vercel, biasanya `main`.
 
 Root Directory Vercel harus tetap mengarah ke folder yang berisi `package.json`. Paket tidak menyertakan file `.env.local` dan `.admin-bootstrap.json`. Jangan unggah file tersebut dari salinan lama.
@@ -42,13 +42,13 @@ Setelah status Ready, buka website dan lakukan refresh. Jika browser masih menam
 - Kartu yang belum berisi proyek memakai gambar/ilustrasi visual; tidak menambah proyek ke database.
 - Jumlah karya dihitung dari proyek yang berstatus Publik.
 - Judul dan intro lama tetap ditampilkan di blok perkenalan; profil dan kontak tetap dapat diedit dari admin.
-- Gambar hero yang sudah kamu atur tetap tersimpan dan dipakai sebagai eksplorasi visual cadangan pada slot kolase yang belum berisi proyek.
-- Bagian Tentang memakai ikon maskot robot kecil yang bergerak idle, berkedip, dan melambaikan tangan. Gambar besar dan baris nama/lokasi di bawah bio sudah dihapus; teks bio dan keahlian tetap dapat diedit di admin.
+- Kedua gambar hero dari admin mengisi slot pendamping di kolase.
+- Bagian Tentang memuat maskot kecil yang bergerak saat masuk layar. Bio dan keahlian diambil dari pengaturan admin.
 - Tombol Android tetap download dan GitHub. Tombol Unity tetap play dan download.
 - Kategori App tersedia pada filter publik dan pilihan kategori di admin. Gunakan untuk aplikasi umum, desktop, atau web. App mendukung tautan download, repositori GitHub, dan URL buka aplikasi opsional.
 - Proyek lama tidak diubah kategorinya secara otomatis. Untuk mengelompokkan ulang, edit proyek di admin, pilih App, lalu simpan.
-- Judul PORTFOLIO mengikuti lebar panel, termasuk di layar ponsel. Filter ponsel ditata dalam dua kolom agar keempat pilihan tetap muat.
-- Loading robot dan liquid tetap tersedia; warnanya mengikuti tema baru.
+- Kartu kategori membuka galeri dengan filter yang sesuai. Panel kontak mengambil Email, GitHub, dan LinkedIn dari data profil.
+- Animasi ikon, lambaian maskot, dan transisi mengikuti preferensi gerakan terbatas dari perangkat. Loading robot tetap bisa dilewati.
 
 ## Menjalankan di komputer (opsional)
 
